@@ -14,8 +14,9 @@ export default async function handler(
 
   try {
     const validatedData = addConversationSchema.parse(req.body);
+    
     const { title, userId } = validatedData;
-
+    
     if (!title || !userId) {
       return res.status(400).json({ error: 'Missing title or userId' });
     }
@@ -36,6 +37,7 @@ export default async function handler(
       },
       include: { messages: true },
     });
+      console.log('Request body:', req.body, newConversation);
 
     return res.status(200).json({ success: true, conversation: newConversation });
   } catch (error) {

@@ -103,7 +103,7 @@ const ChatUI: React.FC = () => {
     setSelectedConversationId(conversationId);
     setOpenModal(true);
   }
-  
+
   const handleCloseModal = () => setOpenModal(false);
 
   const formatDate = (timestamp?: string) => {
@@ -376,8 +376,19 @@ const ChatUI: React.FC = () => {
     {!isMobile && (
           <div className='flex-col'>
           <IconButton
-            className="bg-[#EADDFF] w-full rounded-xl flex justify-center mb-4"
+            // className="bg-[#EADDFF] w-full rounded-xl flex justify-center mb-4"
             onClick={handleAddConversation}
+            sx={{
+              backgroundColor: "#EADDFF",
+              width: "100%",
+              borderRadius: "0.75rem", // or use theme.spacing
+              display: "flex",
+              justifyContent: "center",
+              mb: 4,
+              '&:hover': {
+                backgroundColor: "#E0CCF7", // a hover variant if needed
+              },
+            }}
           >
             <AddCircleOutlineIcon className="text-purple-800" />
             <span className="ml-1 text-xl p-3 font-bold">Conversations</span>
