@@ -103,6 +103,7 @@ const ChatUI: React.FC = () => {
     setSelectedConversationId(conversationId);
     setOpenModal(true);
   }
+  
   const handleCloseModal = () => setOpenModal(false);
 
   const formatDate = (timestamp?: string) => {
@@ -115,6 +116,7 @@ const ChatUI: React.FC = () => {
       hour12: true
     });
   };
+
   const createdFormatDate = (timestamp?: string) => {
     if (!timestamp) return '';
     return new Date(timestamp).toLocaleString('en-US', {
