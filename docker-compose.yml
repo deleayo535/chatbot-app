@@ -1,0 +1,37 @@
+
+services:
+
+  # chatbot-app:
+  #   image: chatbot-app
+  #   container_name: chatbot-app
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - '${APP_PORT}:${APP_PORT}'
+  #   environment:
+  #     NODE_ENV: development
+  #   develop:
+  #     watch:
+  #       - action: sync
+  #         path: ./app
+  #         target: /app
+  #         ignore:
+  #           - node_modules/
+  #       - action: rebuild
+  #         path: package.json
+
+  postgres:
+    image: postgres:17-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=newpasword123
+      # - POSTGRES_DATABASE=postgres
+    # expose:
+    #   - 5432
+    # healthcheck:
+    #   test: [ "CMD", "pg_isready" ]
+    #   interval: 30s
+    #   timeout: 10s
+    #   retries: 5

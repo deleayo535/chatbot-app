@@ -1,0 +1,19 @@
+@keyframes dots {
+    0% { content: "."; }
+    33% { content: ".."; }
+    66% { content: "..."; }
+  }
+  
+  .typing::after {
+    content: ".";
+    animation: dots 1.5s steps(1, end) infinite;
+  }
+
+  .chat {  overflow: hidden;
+    -ms-overflow-style: none; /* for Internet Explorer */
+    scrollbar-width: none; /* for Firefox */
+  }
+  
+  chat::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+  }

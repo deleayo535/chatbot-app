@@ -1,0 +1,43 @@
+// schema.prisma
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id            Int            @id @default(autoincrement())
+  name      String        
+  conversations Conversation[] @relation("UserConversations")
+  messages       Message[]      @relation("UserMessages")
+  createdAt     DateTime       @default(now())
+}
+
+model Conversation {
+  id             Int            @id @default(autoincrement())
+  userId         Int
+  title          String         @default("Conversation")
+  user           User           @relation("UserConversations", fields: [userId], references: [id])
+  messages       Message[]      @relation("ConversationMessages")
+  createdAt      DateTime       @default(now())
+}
+
+model Message {
+  id             Int            @id @default(autoincrement())
+  content        String
+  sender         MessageSender  @default(USER)
+  timestamp      DateTime       @default(now())
+  conversationId Int
+  userId         Int
+  conversation   Conversation   @relation("ConversationMessages", fields: [conversationId], references: [id], onDelete: Cascade)
+  user           User           @relation("UserMessages", fields: [userId], references: [id])
+  createdAt      DateTime       @default(now())
+}
+
+enum MessageSender {
+  USER
+  CHATBOT
+}
