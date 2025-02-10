@@ -2,7 +2,7 @@
 
 import '../../../../app/globals.css';
 
-import { Box, Typography, IconButton,Drawer, List, ListItem, ListItemText } from '@mui/material';
+import { Box, IconButton,Drawer, List, ListItem, ListItemText } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 

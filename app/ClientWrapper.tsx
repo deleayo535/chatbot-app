@@ -1,5 +1,8 @@
 "use client";
-
-export default function ClientWrapper({ children }: { children: React.ReactNode }) {
+interface ClientWrapperProps {
+    children: React.ReactNode;
+  }
+  
+export default function ClientWrapper({ children }: ClientWrapperProps) {
   return <>{children}</>;
 }

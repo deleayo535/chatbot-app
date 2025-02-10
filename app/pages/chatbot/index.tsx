@@ -7,22 +7,18 @@ import {
   Box,
   Paper,
   Typography,
-  TextField,
   IconButton,
   Avatar,
   List,
   ListItem,
-  ListItemAvatar,
   ListItemText,
-  Badge,
-  Stack,
   useTheme,
   useMediaQuery,
   CircularProgress,
 } from "@mui/material";
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import { borderRadius, styled } from "@mui/system";
-import { ChatMessageProps, StyledMessageProps, ChatbotProps, ConversationProps, MessageProps } from "./chatbot.types";
+import { ChatMessageProps, StyledMessageProps, ConversationProps, MessageProps } from "./chatbot.types";
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import DeleteIcon from '@mui/icons-material/Delete';
 import TopHeader from '../../src/components/TopHeader';
@@ -444,7 +440,7 @@ const ChatUI: React.FC = () => {
                       <CircularProgress sx={{ color: "#A594F9" }} />
                   </Box> 
                 ) : (
-                  messagesByConversation[selectedConversationId]?.map((message: any, index: number) => (
+                  messagesByConversation[selectedConversationId]?.map((message: ChatMessageProps, index: number) => (
                    <Box 
                       key={message.id || `message-${index}`} 
                       sx={{ display: "flex",  flexDirection: message.sender === "You" ? "row-reverse" : "row", mb: 2}}
