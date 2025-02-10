@@ -130,7 +130,8 @@ const ChatUI: React.FC = () => {
     setIsTypingSpinner(true);
 
     try {
-      const response = await fetch("/api/addConversation", {
+      
+      const response = await fetch("/apiV2/addConversation", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({title: "Conversation",
@@ -308,7 +309,7 @@ const ChatUI: React.FC = () => {
     setIsLoadingConversation(true);
     const fetchConversations = async () => {
       try {
-        const response = await axios.get("/api/conversations");
+        const response = await axios.get("/apiV2/conversations");
         console.log("Conversation:", response)
         if (response.data.length === 0) {
           console.warn("No conversation found.")

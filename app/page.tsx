@@ -1,6 +1,7 @@
 "use client"
 
-import Chatbot from "./pages/chatbot"
+import Chatbot from "./pages/chatbot";
+import "./globals.css";
 
 
 export default function Home() {
@@ -9,7 +10,6 @@ export default function Home() {
             <> 
             <div>
             <Chatbot/>
-
             </div>
             </>
         </main>
