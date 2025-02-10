@@ -27,13 +27,13 @@ const Header = styled(Box)(({ theme }) => ({
 const TopHeader = () =>{
     return (
       <>
-      <Header className='bg-white'>
+      <Header className='bg-white flex justify-start items-center'>
         <Typography variant="h4"><IconButton>
           <Image 
             src='/chaticon.png'  
             alt="Company Logo"
-            width={45}
-            height={40}
+            width={40}
+            height={35}
         />
           </IconButton>
         </Typography>
