@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-export let conn: any;
+export let conn: Pool;
 
 if (!conn) {
   conn = new Pool({

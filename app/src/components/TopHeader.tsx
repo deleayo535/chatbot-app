@@ -2,6 +2,8 @@
 
 import '../../../app/globals.css';
 import React from "react";
+import Image from 'next/image';
+
 import {
   Box,
   Typography,
@@ -26,7 +28,8 @@ const TopHeader = () =>{
     return (
       <>
       <Header className='bg-white'>
-        <Typography variant="h4"><IconButton><img src='/chaticon.png'></img></IconButton></Typography>
+        <Typography variant="h4"><IconButton>
+          <Image src='/chaticon.png'  alt="Company Logo"/></IconButton></Typography>
       </Header>
       </>
       )

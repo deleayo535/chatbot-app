@@ -17,7 +17,7 @@ import {
   CircularProgress,
 } from "@mui/material";
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
-import { borderRadius, styled } from "@mui/system";
+import { styled } from "@mui/system";
 import { ChatMessageProps, StyledMessageProps, ConversationProps, MessageProps } from "./chatbot.types";
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import DeleteIcon from '@mui/icons-material/Delete';
