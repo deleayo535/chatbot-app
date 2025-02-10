@@ -1,6 +1,6 @@
 // pages/api/conversations.ts
 import type { NextApiRequest, NextApiResponse } from 'next';
-import prisma from '../../src/lib/prisma';
+import prisma from '../../../app/src/lib/prisma';
 
 export default async function handler(
   req: NextApiRequest,

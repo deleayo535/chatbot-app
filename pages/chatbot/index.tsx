@@ -2,7 +2,7 @@
 "use client"
 
 import axios from 'axios';
-import "../../globals.css";
+import "../../app/globals.css";
 import React, { useState, useRef, useEffect } from "react";
 import {
   Box,
@@ -22,11 +22,11 @@ import { styled } from "@mui/system";
 import { ChatMessageProps, StyledMessageProps, ConversationProps, MessageProps, formattedConversationsProps } from "./chatbot.types";
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import DeleteIcon from '@mui/icons-material/Delete';
-import TopHeader from '../../src/components/TopHeader';
-import ConfirmationModal from '../../src/components/Modal';
-import SidebarDrawer from '../../src/components/sidebar/SidebarDrawer';
-import ChatHeader from '../../src/components/chat/ChatHeader';
-import MessageInput from '../../src/components/chat/Input';
+import TopHeader from '../../app/src/components/TopHeader';
+import ConfirmationModal from '../../app/src/components/Modal';
+import SidebarDrawer from '../../app/src/components/sidebar/SidebarDrawer';
+import ChatHeader from '../../app/src/components/chat/ChatHeader';
+import MessageInput from '../../app/src/components/chat/Input';
 
 const ChatContainer = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -131,7 +131,7 @@ const ChatUI: React.FC = () => {
 
     try {
       
-      const response = await fetch("/apiV2/addConversation", {
+      const response = await fetch("/api/addConversation", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({title: "Conversation",
@@ -309,7 +309,7 @@ const ChatUI: React.FC = () => {
     setIsLoadingConversation(true);
     const fetchConversations = async () => {
       try {
-        const response = await axios.get("/apiV2/conversations");
+        const response = await axios.get("/api/conversations");
         console.log("Conversation:", response)
         if (response.data.length === 0) {
           console.warn("No conversation found.")
@@ -380,7 +380,7 @@ const ChatUI: React.FC = () => {
             <AddCircleOutlineIcon className="text-purple-800" />
             <span className="ml-1 text-xl p-3 font-bold text-">Conversations</span>
           </IconButton>
-          <Paper elevation={0} sx={{ width: 340, p: 0, minHeight: "70%" }} className='bg-transparent'>
+          <Paper elevation={0} sx={{ width: 340, p: 0, backgroundColor: "#FBF7FF" }} >
             
             {isLoadingConversation ? (
               <Box sx={{ 
@@ -399,7 +399,7 @@ const ChatUI: React.FC = () => {
                   key={conversation.id}
                   onClick={() => handleSelectConversation(conversation.id)}
                   className={`my-2 p-3 rounded-lg flex justify-between text-lg items-center px-4 cursor-pointer
-                  ${selectedConversationId === conversation.id ? "bg-purple-300":"bg-[#E8DEF8] hover:bg-purple-200" }
+                  ${selectedConversationId === conversation.id ? "!bg-purple-300" :"bg-[#E8DEF8] hover:bg-purple-200" }
                   `}
                 >
                 <div className='flex justify-center items-center px-4 gap-4 '>
