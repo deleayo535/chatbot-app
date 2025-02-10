@@ -18,7 +18,7 @@ import {
 } from "@mui/material";
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import { styled } from "@mui/system";
-import { ChatMessageProps, StyledMessageProps, ConversationProps, MessageProps } from "./chatbot.types";
+import { ChatMessageProps, StyledMessageProps, ConversationProps, MessageProps, formattedConversationsProps } from "./chatbot.types";
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import DeleteIcon from '@mui/icons-material/Delete';
 import TopHeader from '../../src/components/TopHeader';
@@ -313,7 +313,7 @@ const ChatUI: React.FC = () => {
           console.warn("No conversation found.")
         }
 
-        const formattedConversations = response.data.map((conv: any, index: number) => ({
+        const formattedConversations = response.data.map((conv: formattedConversationsProps, index: number) => ({
           id: conv.id,
           name: conv.title,
           displayNumber: index + 1

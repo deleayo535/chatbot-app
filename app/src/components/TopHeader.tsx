@@ -29,7 +29,14 @@ const TopHeader = () =>{
       <>
       <Header className='bg-white'>
         <Typography variant="h4"><IconButton>
-          <Image src='/chaticon.png'  alt="Company Logo"/></IconButton></Typography>
+          <Image 
+            src='/chaticon.png'  
+            alt="Company Logo"
+            width={45}
+            height={40}
+        />
+          </IconButton>
+        </Typography>
       </Header>
       </>
       )
