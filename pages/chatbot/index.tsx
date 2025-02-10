@@ -19,7 +19,7 @@ import {
 } from "@mui/material";
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import { styled } from "@mui/system";
-import { ChatMessageProps, StyledMessageProps, ConversationProps, MessageProps, formattedConversationsProps } from "./chatbot.types";
+import { ChatMessageProps, StyledMessageProps, ConversationProps, MessageProps, formattedConversationsProps } from "../../types/chatbot.types";
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import DeleteIcon from '@mui/icons-material/Delete';
 import TopHeader from '../../app/src/components/TopHeader';
@@ -378,7 +378,7 @@ const ChatUI: React.FC = () => {
             onClick={handleAddConversation}
           >
             <AddCircleOutlineIcon className="text-purple-800" />
-            <span className="ml-1 text-xl p-3 font-bold text-">Conversations</span>
+            <span className="ml-1 text-xl p-3 font-bold">Conversations</span>
           </IconButton>
           <Paper elevation={0} sx={{ width: 340, p: 0, backgroundColor: "#FBF7FF" }} >
             
@@ -387,7 +387,8 @@ const ChatUI: React.FC = () => {
                 display: "flex", 
                 justifyContent: "center", 
                 alignItems: "center",  
-                height: "100%"
+                height: "100%",
+                marginTop: "50%"
                 }}>
                 <CircularProgress sx={{ color: "#A594F9" }} />
               </Box>
