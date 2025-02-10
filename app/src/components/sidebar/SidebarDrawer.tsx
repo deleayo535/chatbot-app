@@ -42,7 +42,19 @@ export default function SidebarDrawer({
       sx={{display: "flex"}}
     >
       <IconButton
-        className="bg-[#EADDFF] w-auto rounded-xl flex justify-center mt-10 mb-3 mx-4"
+        sx={{
+          backgroundColor: "#EADDFF",
+          width: "80%",
+          borderRadius: "0.75rem", // or use theme.spacing
+          display: "flex",
+          justifyContent: "center",
+          m: 4,
+          mb: 4,
+          '&:hover': {
+            backgroundColor: "#E0CCF7", // a hover variant if needed
+          },
+        }}
+        // className="bg-[#EADDFF] w-auto rounded-xl flex justify-center mt-10 mb-3 mx-4"
         onClick={
           // onClose();
           handleAddConversation
@@ -60,8 +72,18 @@ export default function SidebarDrawer({
                 onSelectConversation(conversation.id);
                 onClose();
               }}
-              sx={{}}
-              className="bg-[#E8DEF8] my-2 p-3  rounded-lg flex justify-between items-center px-4 cursor-pointer"
+              sx={{
+                backgroundColor: "#EADDFF",    
+                my: 1,                        
+                py: 1.5,                     
+                px: 2,                        
+                borderRadius: "0.5rem",       
+                display: "flex",            
+                justifyContent: "space-between", 
+                alignItems: "center",       
+                cursor: "pointer",          
+              }}
+              // className="bg-[#E8DEF8] my-2 p-3  rounded-lg flex justify-between items-center px-4 cursor-pointer"
             >
               <ListItemText primary={`${conversation.name} ${index + 1}`} className='text-3xl font-bold' />
               <IconButton 

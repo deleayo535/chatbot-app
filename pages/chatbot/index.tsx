@@ -492,7 +492,7 @@ const ChatUI: React.FC = () => {
                           variant="caption"
                           sx={{ ml: 1, color: "text.secondary" }}
                         >
-                          {message.timestamp ? new Date(message.timestamp).toLocaleTimeString() : ""}
+                          {/* {message.timestamp ? new Date(message.timestamp).toLocaleTimeString() : ""} */}
                         </Typography>
                       </Box>
                     </Box>
