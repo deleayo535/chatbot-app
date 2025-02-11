@@ -67,27 +67,41 @@ Environment variebles
 
 Make sure Docker Desktop is open locally
 
-Apply the Prisma Schema to Your Database
-  npx prisma db push
-  npx prisma migrate dev --name init  //running migration
-  npx prisma generate  //generate prisma client
+## Apply the Prisma Schema to Your Database
 
-Running the Application
+  npx prisma db push.
+  
+  npx prisma migrate dev --name init.       //running migration
+  
+  npx prisma generate.       //generate prisma client
+
+## Running the Application
    yarn dev
 
-Project Structure
+## Project Structure
 
 ├── app/                     # Next.js application code (UI and API routes
+
 ├── prisma/                  # Prisma schema and configurations
+
 ├── public/                  # Static public assets
+
 ├── pages/                   # Pages
+
 ├── types/                   # Typescript interface & enum files
+
 ├── validation/              # Zod validation schemas
-├── Dockerfile               # Docker configuration for development
-├── docker-compose.yml       # Docker Compose file for development
+
+├── Dockerfile               # Docker configuration
+
+├── docker-compose.yml       # Docker Compose file
+
 ├── package.json             # Project metadata and dependencies
+
 ├── next.config.ts           # Next.js configuration (TypeScript)
+
 ├── tailwind.config.ts       # Tailwind configuration
+
 └── README.md                # Project documentation (this file)
 
 
