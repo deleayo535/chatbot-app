@@ -20,7 +20,7 @@ body {
   background: var(--background);
   /* font-family: Roboto; */
   font-family: Arial, Helvetica, sans-serif;
-  overflow: hidden;
+  overflow: auto;
   -ms-overflow-style: none; /* for Internet Explorer */
   scrollbar-width: none; /* for Firefox */
 }

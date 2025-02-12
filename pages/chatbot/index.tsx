@@ -367,7 +367,7 @@ const ChatUI: React.FC = () => {
         {isMobile && (
           <IconButton
             onClick={() => setIsSidebarOpen(true)}
-            sx={{ position: "absolute", top: 16, right: 16, zIndex: 1000 }}
+            sx={{ position: "absolute", top: 10, right: 10, zIndex: 1000 }}
             >
               <MenuRoundedIcon fontSize="large"/>
           </IconButton>
@@ -484,43 +484,48 @@ const ChatUI: React.FC = () => {
                         alt={message.sender}
                         sx={{ mx: 1 }}
                       />
-                      <Box>
+                      <Box
+                      >
                         <Message isOwn={message.isOwn} className=''>
                           <Typography variant="body2" className="text-lg">{message.content}</Typography>
                         </Message>
-                        <Typography
+                        {/* <Typography
+                          isOwn={message.isOwn}
                           variant="caption"
-                          sx={{ ml: 1, color: "text.secondary" }}
+                          sx={{ 
+                            ml: 1, 
+                            flexDirection: message.sender === "You" ? "row-reverse" : "row", 
+                            color: "text.secondary" }}
                         >
-                          {/* {message.timestamp ? new Date(message.timestamp).toLocaleTimeString() : ""} */}
-                        </Typography>
+                          {message.timestamp ? new Date(message.timestamp).toLocaleTimeString() : ""}
+                        </Typography> */}
                       </Box>
                     </Box>
                   </MessageContainer>
                 </Box> 
               ))
             )}
-            </Box> 
-            ) : null}
           {isTyping && (
-            <Box sx={{ display: "flex", justifyItems: 'center', alignItems: "flex-start", marginBottom: 2, mx: 3 }}>
-            <Avatar 
-            sx={{ mx: 1 }}
-            src={'/bot-avatar.jpg'}
-            alt={'bot avatar'}
-            />
-            <Message isOwn={false}  sx={{ display: "flex", alignItems: "center"}}>
+            <Box sx={{ display: "flex", justifyItems: 'start', alignItems: "flex-start", marginBottom: 2, mx: 3 }}>
+              <Avatar 
+              sx={{ mx: 1 }}
+              src={'/bot-avatar.jpg'}
+              alt={'bot avatar'}
+              />
+              <Message isOwn={false}  sx={{ display: "flex", alignItems: "center"}}>
 
-            <Typography 
-              variant="caption" 
-              sx={{ ml: 1, color: "text.secondary", fontSize: "16px", display: "flex", alignItems: "center" }}
-              className="text-gray-500 text-lg"
-            >
-              <span className="typing font-bold text-xl"></span>
-            </Typography>
-            </Message>
+              <Typography 
+                variant="caption" 
+                sx={{ ml: 1, color: "text.secondary", fontSize: "16px", display: "flex", alignItems: "center" }}
+                className="text-gray-500 text-lg"
+              >
+                <span className="typing font-bold text-xl"></span>
+              </Typography>
+              </Message>
             </Box>
           )}
+        </Box> 
+        ) : null}
 
           <div ref={messageEndRef} />
         <MessageInput 
