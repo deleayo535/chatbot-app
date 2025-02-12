@@ -367,7 +367,7 @@ const ChatUI: React.FC = () => {
         {isMobile && (
           <IconButton
             onClick={() => setIsSidebarOpen(true)}
-            sx={{ position: "absolute", top: 16, right: 16, zIndex: 1000 }}
+            sx={{ position: "absolute", top: 10, right: 10, zIndex: 1000 }}
             >
               <MenuRoundedIcon fontSize="large"/>
           </IconButton>
