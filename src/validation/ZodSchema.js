@@ -1,18 +1,18 @@
 import { z } from "zod";
 
-const addConversationSchema = z.object({
+export const addConversationSchema = z.object({
   title: z.string().min(1, "Title is required").optional(),
   userId: z.number({ required_error: "User ID is required" }),
 });
 
-const deleteConversationSchema = z.object({
+export const deleteConversationSchema = z.object({
   conversationId: z
     .string()
     .regex(/^\d+$/, "Conversation ID must be a numeric string"),
 });
 
 
-const sendMessageSchema = z.object({
+export const sendMessageSchema = z.object({
   chat_id: z.number({
     required_error: "chat_id is required",
     invalid_type_error: "chat_id must be a number",
@@ -28,8 +28,8 @@ const sendMessageSchema = z.object({
   }),
 });
 
-module.exports = { 
-  addConversationSchema, 
-  deleteConversationSchema, 
-  sendMessageSchema 
-};
+// module.exports = { 
+//   addConversationSchema, 
+//   deleteConversationSchema, 
+//   sendMessageSchema 
+// };
