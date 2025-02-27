@@ -1,6 +1,6 @@
 // pages/api/deleteConversations.ts
 import type { NextApiRequest, NextApiResponse } from 'next';
-import prisma from '../../../app/src/lib/prisma';
+import prisma from '../../../lib/prisma';
 import { deleteConversationSchema } from '../../../validation/ZodSchema';
 import { z } from 'zod';
 

@@ -1,6 +1,6 @@
 // pages/api/sendMessage.ts
 import type { NextApiRequest, NextApiResponse } from 'next';
-import prisma from '../../../app/src/lib/prisma';
+import prisma from '../../../lib/prisma';
 import { sendMessageSchema } from '../../../validation/ZodSchema';
 
 export default async function handler(

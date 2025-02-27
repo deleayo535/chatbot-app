@@ -1,6 +1,6 @@
 // pages/api/addConversation.ts
 import type { NextApiRequest, NextApiResponse } from 'next';
-import prisma from '../../../app/src/lib/prisma';
+import prisma from '../../../lib/prisma';
 import { addConversationSchema } from '../../../validation/ZodSchema';
 
 export default async function handler(
@@ -37,7 +37,7 @@ export default async function handler(
       },
       include: { messages: true },
     });
-      console.log('Request body:', req.body, newConversation);
+      // console.log('Request body:', req.body, newConversation);
 
     return res.status(200).json({ success: true, conversation: newConversation });
   } catch (error) {

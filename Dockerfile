@@ -2,7 +2,7 @@ FROM node:21.7.3
 
 RUN apt-get update && apt-get install -y postgresql-client
 
-WORKDIR /app
+WORKDIR /src
 
 COPY package.json yarn.lock* ./
 

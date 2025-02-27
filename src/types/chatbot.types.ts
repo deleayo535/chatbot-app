@@ -1,6 +1,9 @@
 export interface StyledMessageProps {
     isOwn: boolean;
 }
+export interface StyleTimeProps {
+    isOwn?: boolean;
+}
 
 export interface MessageProps {
     isOwn?: boolean;

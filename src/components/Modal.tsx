@@ -1,6 +1,6 @@
 'use client';
 
-import '../../../app/globals.css';
+import '../app/globals.css';
 import { Modal, Backdrop, Fade, Box, Typography, IconButton } from '@mui/material';
 
 interface ConfirmationModalProps {
@@ -69,7 +69,19 @@ export default function ConfirmationModal({
           )}
           <div className="flex gap-4 justify-center w-full text-xs mt-6 px-4">
             <IconButton
-              className="w-1/2 p-3 bg-[#E8DEF8] rounded-3xl text-black text-sm font-bold no-hoverfill"
+                sx={{
+                  width: '50%',          
+                  p: '0.75rem',         
+                  bgcolor: '#E8DEF8',   
+                  borderRadius: '1.5rem',
+                  color: 'black',
+                  fontSize: '0.875rem',
+                  fontWeight: 'bold', 
+                  '&:hover': {
+                    bgcolor: '#E8DEF8',
+                  },
+                }}
+              // className="w-1/2 p-3 bg-[#E8DEF8] rounded-3xl text-black text-sm font-bold no-hoverfill"
               onClick={onClose}
             >
               {cancelText}

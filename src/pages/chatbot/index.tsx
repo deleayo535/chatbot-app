@@ -19,14 +19,14 @@ import {
 } from "@mui/material";
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import { styled } from "@mui/system";
-import { ChatMessageProps, StyledMessageProps, ConversationProps, MessageProps, formattedConversationsProps } from "../../types/chatbot.types";
+import { ChatMessageProps, StyledMessageProps, ConversationProps, MessageProps, formattedConversationsProps, StyleTimeProps } from "../../types/chatbot.types";
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import DeleteIcon from '@mui/icons-material/Delete';
-import TopHeader from '../../app/src/components/TopHeader';
-import ConfirmationModal from '../../app/src/components/Modal';
-import SidebarDrawer from '../../app/src/components/sidebar/SidebarDrawer';
-import ChatHeader from '../../app/src/components/chat/ChatHeader';
-import MessageInput from '../../app/src/components/chat/Input';
+import TopHeader from '../../components/TopHeader';
+import ConfirmationModal from '../../components/Modal';
+import SidebarDrawer from '../../components/sidebar/SidebarDrawer';
+import ChatHeader from '../../components/chat/ChatHeader';
+import MessageInput from '../../components/chat/Input';
 
 const ChatContainer = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -61,6 +61,19 @@ const MessageContainer = styled(Box, {
     maxWidth: "100%",
   },
 }));
+
+const TimeStamp = styled(Paper, {
+  shouldForwardProp: (prop) => prop !== "isOwn",
+})<StyleTimeProps>(({ theme, isOwn }) => ({
+
+  marginLeft: isOwn ?  "400px" : "0",
+  paddingLeft: isOwn ? "16px" : "0",
+  paddingRight: isOwn ? "16px" : "0",
+  [theme.breakpoints.down("md")]: {
+    marginLeft: isOwn ?  "0" : "0",
+  },
+
+}))
 
 const Message = styled(Paper, {
   shouldForwardProp: (prop) => prop !== "isOwn",
@@ -373,76 +386,77 @@ const ChatUI: React.FC = () => {
           </IconButton>
         )}
 
-    {!isMobile && (
-          <div className='flex-col'>
-          <IconButton
-            // className="bg-[#EADDFF] w-full rounded-xl flex justify-center mb-4"
-            onClick={handleAddConversation}
-            sx={{
-              backgroundColor: "#EADDFF",
-              width: "100%",
-              borderRadius: "0.75rem", // or use theme.spacing
-              display: "flex",
-              justifyContent: "center",
-              mb: 4,
-              '&:hover': {
-                backgroundColor: "#E0CCF7", // a hover variant if needed
-              },
-            }}
-          >
-            <AddCircleOutlineIcon className="text-purple-800" />
-            <span className="ml-1 text-xl p-3 font-bold">Conversations</span>
-          </IconButton>
-          <Paper elevation={0} sx={{ width: 340, p: 0, backgroundColor: "#FBF7FF" }} >
-            
-            {isLoadingConversation ? (
-              <Box sx={{ 
-                display: "flex", 
-                justifyContent: "center", 
-                alignItems: "center",  
-                height: "100%",
-                marginTop: "50%"
-                }}>
-                <CircularProgress sx={{ color: "#A594F9" }} />
-              </Box>
-            ):(
+        {!isMobile && (
+              <div className='flex-col'>
+              <IconButton
+                // className="bg-[#EADDFF] w-full rounded-xl flex justify-center mb-4"
+                onClick={handleAddConversation}
+                sx={{
+                  backgroundColor: "#EADDFF",
+                  width: "100%",
+                  borderRadius: "0.75rem", // or use theme.spacing
+                  display: "flex",
+                  justifyContent: "center",
+                  mb: 4,
+                  '&:hover': {
+                    backgroundColor: "#E0CCF7", // a hover variant if needed
+                  },
+                }}
+              >
+                <AddCircleOutlineIcon className="text-purple-800" />
+                <span className="ml-1 text-xl p-3 font-bold">Conversations</span>
+              </IconButton>
+              <Paper elevation={0} sx={{ width: 340, p: 0, backgroundColor: "#FBF7FF" }} >
                 
-            <List>
-              {conversations.map((conversation, index) => (
-                <ListItem
-                  key={conversation.id}
-                  onClick={() => handleSelectConversation(conversation.id)}
-                  className={`my-2 p-3 rounded-lg flex justify-between text-lg items-center px-4 cursor-pointer
-                  ${selectedConversationId === conversation.id ? "!bg-purple-300" :"bg-[#E8DEF8] hover:bg-purple-200" }
-                  `}
-                >
-                <div className='flex justify-center items-center px-4 gap-4 '>
-                  <ListItemText primary={`${conversation.name} ${index + 1}`}/>
-                </div>
-                  
-                <IconButton 
-                  onClick={() => handleOpenModal(conversation.id)}
-                  >
-                    <DeleteIcon className="text-purple-800" />
-                  </IconButton>
-                </ListItem>
-              ))}
-            </List>
-          )}
-        </Paper>
-      </div>
-    )}
+                {isLoadingConversation ? (
+                  <Box sx={{ 
+                    display: "flex", 
+                    justifyContent: "center", 
+                    alignItems: "center",  
+                    height: "100%",
+                    marginTop: "50%"
+                    }}>
+                    <CircularProgress sx={{ color: "#A594F9" }} />
+                  </Box>
+                ):(
+                    
+                <List>
+                  {conversations.map((conversation, index) => (
+                    <ListItem
+                      key={conversation.id}
+                      onClick={() => handleSelectConversation(conversation.id)}
+                      className={`my-2 p-3 rounded-lg flex justify-between text-lg items-center px-4 cursor-pointer
+                      ${selectedConversationId === conversation.id ? "!bg-purple-300" :"bg-[#E8DEF8] hover:bg-purple-200" }
+                      `}
+                    >
+                    <div className='flex justify-center items-center px-4 gap-4 '>
+                      <ListItemText primary={`${conversation.name} ${index + 1}`}/>
+                    </div>
+                      
+                    <IconButton 
+                      onClick={() => handleOpenModal(conversation.id)}
+                      >
+                        <DeleteIcon className="text-purple-800" />
+                      </IconButton>
+                    </ListItem>
+                  ))}
+                </List>
+              )}
+            </Paper>
+          </div>
+        )}
 
-    <SidebarDrawer 
-      title={'Conversation'}
-      open={isSidebarOpen}
-      conversations={conversations}
-      onClose={() => setIsSidebarOpen(false)}
-      handleOpenModal={handleOpenModal}
-      onSelectConversation={handleSelectConversation}
-      handleAddConversation={handleAddConversation}
-    />
-      <MessageArea className='chat scroll'>
+        <SidebarDrawer 
+          title={'Conversation'}
+          open={isSidebarOpen}
+          conversations={conversations}
+          onClose={() => setIsSidebarOpen(false)}
+          handleOpenModal={handleOpenModal}
+          onSelectConversation={handleSelectConversation}
+          handleAddConversation={handleAddConversation}
+        />
+
+        <MessageArea className='chat scroll'>
           <Paper 
             elevation={0} 
             className='rounded-3xl'
@@ -466,7 +480,7 @@ const ChatUI: React.FC = () => {
                       message.timestamp &&(
                       <Typography
                         variant="caption"
-                        sx={{ textAlign: 'center', fontSize: 16, fontWeight: 600, display: 'block', color: 'black', mt: 1, mb: 2 }}
+                        sx={{ textAlign: 'center', fontSize: 16, fontWeight: 500, display: 'block', color: 'black', mt: 2, mb: 2 }}
                         >
                       {formatDate(message.timestamp)}
                     </Typography>
@@ -476,7 +490,8 @@ const ChatUI: React.FC = () => {
                       sx={{ 
                         display: "flex",
                         flexDirection: message.sender === "You" ? "row-reverse" : "row", 
-                        mb: 0,
+                        mb: 2,
+                        // justifyContent: "right",
                        }}
                     >
                       <Avatar
@@ -486,20 +501,27 @@ const ChatUI: React.FC = () => {
                       />
                       <Box
                       >
+                        <div>
+
                         <Message isOwn={message.isOwn} className=''>
                           <Typography variant="body2" className="text-lg">{message.content}</Typography>
                         </Message>
-                        {/* <Typography
-                          isOwn={message.isOwn}
-                          variant="caption"
+
+                        <TimeStamp
+                          elevation={0} 
                           sx={{ 
-                            ml: 1, 
-                            flexDirection: message.sender === "You" ? "row-reverse" : "row", 
-                            color: "text.secondary" }}
+                            ml: message.isOwn ?  "400px" : "0",
+                            pl: message.isOwn ? "6px" : "0",
+                            pr: message.isOwn ? "0" : "6px",
+                            textAlign: message.isOwn ? "start" : "end", 
+                            color: "text.secondary" 
+                          }}
+                          className="text-sm"
                         >
                           {message.timestamp ? new Date(message.timestamp).toLocaleTimeString() : ""}
-                        </Typography> */}
-                      </Box>
+                        </TimeStamp>
+                        </div>
+                        </Box>
                     </Box>
                   </MessageContainer>
                 </Box> 

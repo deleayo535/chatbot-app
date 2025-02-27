@@ -1,6 +1,6 @@
 'use client';
 
-import '../../../../app/globals.css';
+import '../../app/globals.css';
 
 import { Box, IconButton,Drawer, List, ListItem, ListItemText } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -49,21 +49,20 @@ export default function SidebarDrawer({
           display: "flex",
           justifyContent: "center",
           m: 4,
-          mb: 4,
+          mb: 0,
           '&:hover': {
             backgroundColor: "#E0CCF7", // a hover variant if needed
           },
         }}
         // className="bg-[#EADDFF] w-auto rounded-xl flex justify-center mt-10 mb-3 mx-4"
         onClick={
-          // onClose();
           handleAddConversation
         }
         >
         <AddCircleOutlineIcon className="text-purple-800" />
         <span className="ml-1 text-lg p-3 font-bold text-">{title}</span>
       </IconButton>
-      <Box sx={{ p: 2 }}>
+      <Box sx={{ p: 2, mx: 2 }}>
         <List>
           {conversations.map((conversation, index) => (
             <ListItem
