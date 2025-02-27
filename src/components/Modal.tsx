@@ -88,7 +88,19 @@ export default function ConfirmationModal({
             </IconButton>
             <IconButton
               onClick={onConfirm}
-              className="w-1/2 p-3 bg-[#B3261E] rounded-3xl text-white text-sm font-bold no-hover"
+              sx={{
+                width: '50%',          
+                p: '0.75rem',         
+                bgcolor: '#B3261E',   
+                borderRadius: '1.5rem',
+                color: 'white',
+                fontSize: '0.875rem',
+                fontWeight: 'bold', 
+                '&:hover': {
+                  bgcolor: '#B3261E',
+                },
+              }}
+              // className="w-1/2 p-3 bg-[#B3261E] rounded-3xl text-white text-sm font-bold no-hover"
             >
               {confirmText}
             </IconButton>
