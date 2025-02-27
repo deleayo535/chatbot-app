@@ -425,6 +425,7 @@ const ChatUI: React.FC = () => {
                     <ListItem
                       key={conversation.id}
                       onClick={() => handleSelectConversation(conversation.id)}
+                      sx={{justifyContent: 'space-between'}}
                       className={`my-2 p-3 rounded-lg flex justify-between text-lg items-center px-4 cursor-pointer
                       ${selectedConversationId === conversation.id ? "!bg-purple-300" :"bg-[#E8DEF8] hover:bg-purple-200" }
                       `}
